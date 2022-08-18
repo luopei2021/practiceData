@@ -23,6 +23,7 @@ select from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'
 --  dbName=ods
 --  tableName={{name}}
 -- writeMode=overwrite
+-- skipFollowStepWhenEmpty=true
 select {% for col in columns -%}
            {{col.name}}	AS {{col.name}},
        {% endfor -%}

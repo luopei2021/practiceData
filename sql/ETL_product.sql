@@ -23,6 +23,7 @@ select from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'
 --  dbName=ods
 --  tableName=product
 -- writeMode=overwrite
+-- skipFollowStepWhenEmpty=true
 select ProductID	AS ProductID,
        Name	AS Name,
        ProductNumber	AS ProductNumber,
