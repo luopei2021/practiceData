@@ -1,0 +1,1 @@
+ poetry run etl-cli create --resource resources  --overwrite
