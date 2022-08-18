@@ -20,8 +20,8 @@ select from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'
 --  dbName=raw
 --  tableName={{name}}
 -- target=hive
---  dbName=default
---  tableName={{name}}_his
+--  dbName=ods
+--  tableName={{name}}
 -- writeMode=overwrite
 select {% for col in columns -%}
            {{col.name}}	AS {{col.name}},
@@ -35,11 +35,11 @@ where ModifiedDate >= '${DATA_RANGE_START}' and ModifiedDate < '${DATA_RANGE_END
 
 -- step=3
 -- source=hive
---  dbName=default
---  tableName={{name}}_his
+--  dbName=ods
+--  tableName={{name}}
 -- target=hive
---  dbName=default
---  tableName={{name}}_curr
+--  dbName=dw
+--  tableName={{name}}
 -- writeMode=overwrite
 select {% for col in columns -%}
            {{col.name}}	AS {{col.name}}{{ "" if loop.last else "," }}
@@ -50,8 +50,8 @@ union all
 select {% for col in columns -%}
            {{col.name}}	AS {{col.name}}{{ "" if loop.last else "," }}
        {% endfor -%}
-from {{name}}_curr as a
-left join {{name}}_his as b on
+from dw.{{name}} as a
+left join ods.{{name}} as b on
        {% for onekey in primary_key -%}
            a.{{onekey}} = b.{{onekey}} {{ "" if loop.last else "and" }}
        {% endfor -%}

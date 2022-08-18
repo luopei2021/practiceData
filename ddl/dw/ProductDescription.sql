@@ -1,4 +1,4 @@
-create table  ProductDescription_his (
+create table  ods.ProductDescription (
 ProductDescriptionID int,
 Description string,
 rowguid string,
@@ -10,7 +10,7 @@ ModifiedDate string
 STORED AS ORC;
 
 
-create table  ProductDescription_curr (
+create table  dw.ProductDescription (
 ProductDescriptionID int,
 Description string,
 rowguid string,

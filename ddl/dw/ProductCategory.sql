@@ -1,4 +1,4 @@
-create table ProductCategory_his
+create table ods.ProductCategory
 (
 ProductCategoryID     int
 ,ParentProductCategoryID     int
@@ -11,7 +11,7 @@ ProductCategoryID     int
     day string)
 STORED AS ORC;
 
-create table ProductCategory_curr
+create table dw.ProductCategory
 (
 ProductCategoryID     int
 ,ParentProductCategoryID     int

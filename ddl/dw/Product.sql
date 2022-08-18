@@ -1,4 +1,4 @@
-create table product_his
+create table ods.product
 (
 `ProductID` int
 ,Name string
@@ -23,7 +23,7 @@ create table product_his
     day string)
 STORED AS ORC;
 
-create table product_curr(
+create table dw.product(
 `ProductID` int
 ,Name string
 ,ProductNumber string
