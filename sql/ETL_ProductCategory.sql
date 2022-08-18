@@ -20,8 +20,8 @@ select from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'
 --  dbName=raw
 --  tableName=ProductCategory
 -- target=hive
---  dbName=default
---  tableName=ProductCategory_his
+--  dbName=ods
+--  tableName=ProductCategory
 -- writeMode=overwrite
 select ProductCategoryID	AS ProductCategoryID,
        ParentProductCategoryID	AS ParentProductCategoryID,
@@ -37,11 +37,11 @@ where ModifiedDate >= '${DATA_RANGE_START}' and ModifiedDate < '${DATA_RANGE_END
 
 -- step=3
 -- source=hive
---  dbName=default
---  tableName=ProductCategory_his
+--  dbName=ods
+--  tableName=ProductCategory
 -- target=hive
---  dbName=default
---  tableName=ProductCategory_curr
+--  dbName=dw
+--  tableName=ProductCategory
 -- writeMode=overwrite
 select ProductCategoryID	AS ProductCategoryID,
        ParentProductCategoryID	AS ParentProductCategoryID,
@@ -56,8 +56,8 @@ select ProductCategoryID	AS ProductCategoryID,
        Name	AS Name,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate
-       from ProductCategory_curr as a
-left join ProductCategory_his as b on
+       from dw.ProductCategory as a
+left join ods.ProductCategory as b on
        a.ProductID = b.ProductID 
        and b.`year` =  '${YEAR}' and b.`month` = '${MONTH}' and b.`day` = '${DAY}'
 where b.ProductID  is null

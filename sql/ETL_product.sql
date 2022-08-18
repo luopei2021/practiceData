@@ -20,8 +20,8 @@ select from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'
 --  dbName=raw
 --  tableName=product
 -- target=hive
---  dbName=default
---  tableName=product_his
+--  dbName=ods
+--  tableName=product
 -- writeMode=overwrite
 select ProductID	AS ProductID,
        Name	AS Name,
@@ -49,11 +49,11 @@ where ModifiedDate >= '${DATA_RANGE_START}' and ModifiedDate < '${DATA_RANGE_END
 
 -- step=3
 -- source=hive
---  dbName=default
---  tableName=product_his
+--  dbName=ods
+--  tableName=product
 -- target=hive
---  dbName=default
---  tableName=product_curr
+--  dbName=dw
+--  tableName=product
 -- writeMode=overwrite
 select ProductID	AS ProductID,
        Name	AS Name,
@@ -92,8 +92,8 @@ select ProductID	AS ProductID,
        ThumbnailPhotoFileName	AS ThumbnailPhotoFileName,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate
-       from product_curr as a
-left join product_his as b on
+       from dw.product as a
+left join ods.product as b on
        a.ProductID = b.ProductID 
        and b.`year` =  '${YEAR}' and b.`month` = '${MONTH}' and b.`day` = '${DAY}'
 where b.ProductID  is null
