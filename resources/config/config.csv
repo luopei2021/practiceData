@@ -1,4 +1,4 @@
 name,write_mode,primary_key,mocha_db_name,timestamp,template,past_day
 product,overwrite,"ProductID",raw,,normal.sql,
-ProductCategory,overwrite,"ProductID",raw,,normal.sql,
-ProductDescription,overwrite,"ProductID",raw,,normal.sql,
+ProductCategory,overwrite,"ProductCategoryID",raw,,normal.sql,
+ProductDescription,overwrite,"ProductDescriptionID",raw,,normal.sql,

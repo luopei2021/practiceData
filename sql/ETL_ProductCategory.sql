@@ -58,6 +58,6 @@ select ProductCategoryID	AS ProductCategoryID,
        ModifiedDate	AS ModifiedDate
        from dw.ProductCategory as a
 left join ods.ProductCategory as b on
-       a.ProductID = b.ProductID 
+       a.ProductCategoryID = b.ProductCategoryID 
        and b.`year` =  '${YEAR}' and b.`month` = '${MONTH}' and b.`day` = '${DAY}'
-where b.ProductID  is null
+where b.ProductCategoryID  is null

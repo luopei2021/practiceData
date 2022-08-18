@@ -55,6 +55,6 @@ select ProductDescriptionID	AS ProductDescriptionID,
        ModifiedDate	AS ModifiedDate
        from dw.ProductDescription as a
 left join ods.ProductDescription as b on
-       a.ProductID = b.ProductID 
+       a.ProductDescriptionID = b.ProductDescriptionID 
        and b.`year` =  '${YEAR}' and b.`month` = '${MONTH}' and b.`day` = '${DAY}'
-where b.ProductID  is null
+where b.ProductDescriptionID  is null
