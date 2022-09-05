@@ -1,4 +1,4 @@
-create table product
+create table  product
 (
 ProductID int
 ,Name string
@@ -23,7 +23,7 @@ ProductID int
     day string)
 STORED AS ORC;
 
-create table ProductCategory
+create table  ProductCategory
 (
 ProductCategoryID     int
 ,ParentProductCategoryID     int
@@ -36,7 +36,7 @@ ProductCategoryID     int
     day string)
 STORED AS ORC;
 
-create table  ProductDescription
+create table   ProductDescription
 (
 ProductDescriptionID int,
 Description string,
@@ -48,7 +48,7 @@ ModifiedDate string
     day string)
 STORED AS ORC;
 
-CREATE TABLE Address
+create table  Address
 (
 AddressID INT
 ,AddressLine1 STRING
@@ -58,14 +58,13 @@ AddressID INT
 ,CountryRegion STRING
 ,PostalCode STRING
 ,rowguid STRING
-,ModifiedDate STRING
-)PARTITIONED BY (
+,ModifiedDate STRING)PARTITIONED BY (
     year STRING,
     month STRING,
     day STRING)
 STORED AS ORC;
 
-CREATE TABLE Customer
+create table  Customer
 (
 CustomerID INT
 ,NameStyle BINARY
@@ -81,53 +80,49 @@ CustomerID INT
 ,PasswordHash STRING
 ,PasswordSalt STRING
 ,rowguid STRING
-,ModifiedDate STRING
-) PARTITIONED BY (
+,ModifiedDate STRING) PARTITIONED BY (
     year STRING,
     month STRING,
     day STRING)
     STORED AS ORC;
 
-CREATE TABLE CustomerAddress
+create table  CustomerAddress
 (
 CustomerID INT
 ,AddressID INT
 ,AddressType STRING
 ,rowguid STRING
-,ModifiedDate STRING
-) PARTITIONED BY (
+,ModifiedDate STRING) PARTITIONED BY (
     year string,
     month string,
     day string)
     STORED AS ORC;
 
-CREATE TABLE ProductModel
+create table  ProductModel
 (
 ProductModelID INT
 ,Name STRING
 ,CatalogDescription STRING
 ,rowguid STRING
-,ModifiedDate STRING
-) PARTITIONED BY (
+,ModifiedDate STRING) PARTITIONED BY (
     year string,
     month string,
     day string)
     STORED AS ORC;
 
-CREATE TABLE ProductModelProductDescription
+create table  ProductModelProductDescription
 (
 ProductModelID INT
 ,ProductDescriptionID INT
 ,Culture STRING
 ,rowguid STRING
-,ModifiedDate STRING
-) PARTITIONED BY (
+,ModifiedDate STRING) PARTITIONED BY (
     year string,
     month string,
     day string)
 STORED AS ORC;
 
-CREATE TABLE SalesOrder
+create table  SalesOrder
 (
 SalesOrderID INT
 ,SalesOrderDetailID INT
@@ -156,8 +151,7 @@ SalesOrderID INT
 ,UnitPriceDiscount DOUBLE
 ,LineTotal DECIMAL(32, 10)
 ,rowguid STRING
-,ModifiedDate STRING
-) PARTITIONED BY (
+,ModifiedDate STRING) PARTITIONED BY (
     year string,
     month string,
     day string)

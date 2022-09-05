@@ -56,7 +56,8 @@ def parse_hive_sql(sql):
                 columnStrs = txt[txt.find("\n(") + 2:txt.rfind(")")].strip()
                 for colStr in columnStrs.split("\n"):
                     colName = colStr.split(' ')[0].replace(',', '').strip()
-                    colType = colStr.split(' ')[1].replace(',', '').strip()
+                    # colType = colStr.split(' ')[1].replace(',', '').strip()
+                    colType = ""
                     table.add_column(Column(colName, colType))
                 tables.add_table(table)
                 break
