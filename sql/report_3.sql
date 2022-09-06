@@ -15,7 +15,7 @@ with distinct_order as (select SalesOrderID
       ,max(ShipDate) as maxShipDate
       ,min(OrderDate) as minOrderDate
       ,datediff(max(ShipDate),min(OrderDate))  as sale_period
-from raw.SalesOrder
+from dw.SalesOrder
 group by SalesOrderID
 ),
 rank_order as (
