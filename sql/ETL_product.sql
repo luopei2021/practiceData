@@ -1,4 +1,4 @@
--- workflow=test
+-- workflow=product
 --  period=1440
 --  loadType=incremental
 --  logDrivenType=timewindow
