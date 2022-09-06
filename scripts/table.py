@@ -46,4 +46,4 @@ class TableModel:
     def render_etl_sql(self, template, overwrite=False, file_suffix=""):
         output_dir = self.output_dir
         sql_file_name = f"ETL_{self.name}{file_suffix}.sql"
-        return self.render_file(template, sql_file_name, output_dir, overwrite)
+        return self.render_file(template, sql_file_name.lower(), output_dir, overwrite)

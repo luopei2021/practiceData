@@ -1,4 +1,4 @@
--- workflow={{name}}
+-- workflow=etl_{{name.lower()}}
 --  period=1440
 --  loadType=incremental
 --  logDrivenType=timewindow
