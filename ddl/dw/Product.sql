@@ -6,14 +6,14 @@ create table ods.product
 ,Color string
 ,StandardCost decimal(32, 10)
 ,ListPrice decimal(32, 10)
-,Size string
+,`Size` string
 ,Weight  decimal(32, 10)
 ,ProductCategoryID int
 ,ProductModelID int
 ,SellStartDate string
 ,SellEndDate string
 ,DiscontinuedDate string
-,ThumbNailPhoto varbinary
+,ThumbNailPhoto binary
 ,ThumbnailPhotoFileName string
 ,rowguid string
 ,ModifiedDate string
@@ -30,14 +30,14 @@ create table dw.product(
 ,Color string
 ,StandardCost decimal(32, 10)
 ,ListPrice decimal(32, 10)
-,Size string
+,`Size` string
 ,Weight  decimal(32, 10)
 ,ProductCategoryID int
 ,ProductModelID int
 ,SellStartDate string
 ,SellEndDate string
 ,DiscontinuedDate string
-,ThumbNailPhoto varbinary
+,ThumbNailPhoto binary
 ,ThumbnailPhotoFileName string
 ,rowguid string
 ,ModifiedDate string
