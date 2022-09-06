@@ -4,5 +4,5 @@ CREATE TABLE dm.report3
     maxShipDate  STRING,
     minOrderDate  STRING,
     sale_period int,
-    rank_number  int,
+    rank_number  int
 );
