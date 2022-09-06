@@ -72,23 +72,23 @@ select ProductID	AS ProductID,
        from ods.Product
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
-select ProductID	AS ProductID,
-       Name	AS Name,
-       ProductNumber	AS ProductNumber,
-       Color	AS Color,
-       StandardCost	AS StandardCost,
-       ListPrice	AS ListPrice,
-       Size	AS Size,
-       Weight	AS Weight,
-       ProductCategoryID	AS ProductCategoryID,
-       ProductModelID	AS ProductModelID,
-       SellStartDate	AS SellStartDate,
-       SellEndDate	AS SellEndDate,
-       DiscontinuedDate	AS DiscontinuedDate,
-       ThumbNailPhoto	AS ThumbNailPhoto,
-       ThumbnailPhotoFileName	AS ThumbnailPhotoFileName,
-       rowguid	AS rowguid,
-       ModifiedDate	AS ModifiedDate
+select a.ProductID	AS ProductID,
+       a.Name	AS Name,
+       a.ProductNumber	AS ProductNumber,
+       a.Color	AS Color,
+       a.StandardCost	AS StandardCost,
+       a.ListPrice	AS ListPrice,
+       a.Size	AS Size,
+       a.Weight	AS Weight,
+       a.ProductCategoryID	AS ProductCategoryID,
+       a.ProductModelID	AS ProductModelID,
+       a.SellStartDate	AS SellStartDate,
+       a.SellEndDate	AS SellEndDate,
+       a.DiscontinuedDate	AS DiscontinuedDate,
+       a.ThumbNailPhoto	AS ThumbNailPhoto,
+       a.ThumbnailPhotoFileName	AS ThumbnailPhotoFileName,
+       a.rowguid	AS rowguid,
+       a.ModifiedDate	AS ModifiedDate
        from dw.Product as a
 left join ods.Product as b on
        a.ProductID = b.ProductID 

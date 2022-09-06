@@ -48,11 +48,11 @@ select ProductCategoryID	AS ProductCategoryID,
        from ods.ProductCategory
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
-select ProductCategoryID	AS ProductCategoryID,
-       ParentProductCategoryID	AS ParentProductCategoryID,
-       Name	AS Name,
-       rowguid	AS rowguid,
-       ModifiedDate	AS ModifiedDate
+select a.ProductCategoryID	AS ProductCategoryID,
+       a.ParentProductCategoryID	AS ParentProductCategoryID,
+       a.Name	AS Name,
+       a.rowguid	AS rowguid,
+       a.ModifiedDate	AS ModifiedDate
        from dw.ProductCategory as a
 left join ods.ProductCategory as b on
        a.ProductCategoryID = b.ProductCategoryID 

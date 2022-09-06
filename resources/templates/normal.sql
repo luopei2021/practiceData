@@ -45,7 +45,7 @@ from ods.{{name}}
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
 select {% for col in columns -%}
-           {{col.name}}	AS {{col.name}}{{ "" if loop.last else "," }}
+           a.{{col.name}}	AS {{col.name}}{{ "" if loop.last else "," }}
        {% endfor -%}
 from dw.{{name}} as a
 left join ods.{{name}} as b on

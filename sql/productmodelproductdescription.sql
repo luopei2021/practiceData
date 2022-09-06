@@ -48,11 +48,11 @@ select ProductModelID	AS ProductModelID,
        from ods.ProductModelProductDescription
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
-select ProductModelID	AS ProductModelID,
-       ProductDescriptionID	AS ProductDescriptionID,
-       Culture	AS Culture,
-       rowguid	AS rowguid,
-       ModifiedDate	AS ModifiedDate
+select a.ProductModelID	AS ProductModelID,
+       a.ProductDescriptionID	AS ProductDescriptionID,
+       a.Culture	AS Culture,
+       a.rowguid	AS rowguid,
+       a.ModifiedDate	AS ModifiedDate
        from dw.ProductModelProductDescription as a
 left join ods.ProductModelProductDescription as b on
        a.ProductModelID = b.ProductModelID and

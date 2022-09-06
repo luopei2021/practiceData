@@ -68,21 +68,21 @@ select CustomerID	AS CustomerID,
        from ods.Customer
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
-select CustomerID	AS CustomerID,
-       NameStyle	AS NameStyle,
-       Title	AS Title,
-       FirstName	AS FirstName,
-       MiddleName	AS MiddleName,
-       LastName	AS LastName,
-       Suffix	AS Suffix,
-       CompanyName	AS CompanyName,
-       SalesPerson	AS SalesPerson,
-       EmailAddress	AS EmailAddress,
-       Phone	AS Phone,
-       PasswordHash	AS PasswordHash,
-       PasswordSalt	AS PasswordSalt,
-       rowguid	AS rowguid,
-       ModifiedDate	AS ModifiedDate
+select a.CustomerID	AS CustomerID,
+       a.NameStyle	AS NameStyle,
+       a.Title	AS Title,
+       a.FirstName	AS FirstName,
+       a.MiddleName	AS MiddleName,
+       a.LastName	AS LastName,
+       a.Suffix	AS Suffix,
+       a.CompanyName	AS CompanyName,
+       a.SalesPerson	AS SalesPerson,
+       a.EmailAddress	AS EmailAddress,
+       a.Phone	AS Phone,
+       a.PasswordHash	AS PasswordHash,
+       a.PasswordSalt	AS PasswordSalt,
+       a.rowguid	AS rowguid,
+       a.ModifiedDate	AS ModifiedDate
        from dw.Customer as a
 left join ods.Customer as b on
        a.CustomerID = b.CustomerID 

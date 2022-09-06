@@ -48,11 +48,11 @@ select CustomerID	AS CustomerID,
        from ods.CustomerAddress
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
-select CustomerID	AS CustomerID,
-       AddressID	AS AddressID,
-       AddressType	AS AddressType,
-       rowguid	AS rowguid,
-       ModifiedDate	AS ModifiedDate
+select a.CustomerID	AS CustomerID,
+       a.AddressID	AS AddressID,
+       a.AddressType	AS AddressType,
+       a.rowguid	AS rowguid,
+       a.ModifiedDate	AS ModifiedDate
        from dw.CustomerAddress as a
 left join ods.CustomerAddress as b on
        a.CustomerID = b.CustomerID and

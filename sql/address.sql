@@ -56,15 +56,15 @@ select AddressID	AS AddressID,
        from ods.Address
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
-select AddressID	AS AddressID,
-       AddressLine1	AS AddressLine1,
-       AddressLine2	AS AddressLine2,
-       City	AS City,
-       StateProvince	AS StateProvince,
-       CountryRegion	AS CountryRegion,
-       PostalCode	AS PostalCode,
-       rowguid	AS rowguid,
-       ModifiedDate	AS ModifiedDate
+select a.AddressID	AS AddressID,
+       a.AddressLine1	AS AddressLine1,
+       a.AddressLine2	AS AddressLine2,
+       a.City	AS City,
+       a.StateProvince	AS StateProvince,
+       a.CountryRegion	AS CountryRegion,
+       a.PostalCode	AS PostalCode,
+       a.rowguid	AS rowguid,
+       a.ModifiedDate	AS ModifiedDate
        from dw.Address as a
 left join ods.Address as b on
        a.AddressID = b.AddressID 
