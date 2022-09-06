@@ -57,7 +57,7 @@ select AddressID	AS AddressID,
        PostalCode	AS PostalCode,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate
-       from Address_his
+       from ods.Address
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
 select AddressID	AS AddressID,

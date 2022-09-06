@@ -49,7 +49,7 @@ select ProductCategoryID	AS ProductCategoryID,
        Name	AS Name,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate
-       from ProductCategory_his
+       from ods.ProductCategory
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
 select ProductCategoryID	AS ProductCategoryID,

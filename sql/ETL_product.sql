@@ -73,7 +73,7 @@ select ProductID	AS ProductID,
        ThumbnailPhotoFileName	AS ThumbnailPhotoFileName,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate
-       from product_his
+       from ods.product
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
 select ProductID	AS ProductID,

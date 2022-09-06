@@ -69,7 +69,7 @@ select CustomerID	AS CustomerID,
        PasswordSalt	AS PasswordSalt,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate
-       from Customer_his
+       from ods.Customer
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
 select CustomerID	AS CustomerID,

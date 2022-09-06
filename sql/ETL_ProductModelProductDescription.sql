@@ -49,7 +49,7 @@ select ProductModelID	AS ProductModelID,
        Culture	AS Culture,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate
-       from ProductModelProductDescription_his
+       from ods.ProductModelProductDescription
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
 select ProductModelID	AS ProductModelID,

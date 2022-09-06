@@ -49,7 +49,7 @@ select CustomerID	AS CustomerID,
        AddressType	AS AddressType,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate
-       from CustomerAddress_his
+       from ods.CustomerAddress
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
 select CustomerID	AS CustomerID,

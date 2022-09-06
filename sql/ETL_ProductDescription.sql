@@ -47,7 +47,7 @@ select ProductDescriptionID	AS ProductDescriptionID,
        Description	AS Description,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate
-       from ProductDescription_his
+       from ods.ProductDescription
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
 select ProductDescriptionID	AS ProductDescriptionID,

@@ -146,7 +146,7 @@ select SalesOrderID	AS SalesOrderID,
        LineTotal	AS LineTotal,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate
-       from SalesOrder_his
+       from ods.SalesOrder
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
 select SalesOrderID	AS SalesOrderID,

@@ -45,7 +45,7 @@ where ModifiedDate >= '${DATA_RANGE_START}' and ModifiedDate < '${DATA_RANGE_END
 select {% for col in columns -%}
            {{col.name}}	AS {{col.name}}{{ "" if loop.last else "," }}
        {% endfor -%}
-from {{name}}_his
+from ods.{{name}}
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
 select {% for col in columns -%}
