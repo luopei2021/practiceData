@@ -1,4 +1,4 @@
-create table  product
+create table  Product
 (
 ProductID int
 ,Name string

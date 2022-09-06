@@ -14,10 +14,10 @@ select from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'
 -- step=2
 -- source=mysql
 --  dbName=bigdata_etl
---  tableName=product
+--  tableName=Product
 -- target=hive
 --  dbName=ods
---  tableName=product
+--  tableName=Product
 -- writeMode=overwrite
 -- skipFollowStepWhenEmpty=true
 select ProductID	AS ProductID,
@@ -40,17 +40,17 @@ select ProductID	AS ProductID,
        '${YEAR}' AS "year",
        '${MONTH}' AS "month",
        '${DAY}' AS "day"
-from raw.product
+from raw.Product
 where ModifiedDate >= '${DATA_RANGE_START}' and ModifiedDate < '${DATA_RANGE_END}'
 
 
 -- step=3
 -- source=hive
 --  dbName=ods
---  tableName=product
+--  tableName=Product
 -- target=hive
 --  dbName=dw
---  tableName=product
+--  tableName=Product
 -- writeMode=overwrite
 select ProductID	AS ProductID,
        Name	AS Name,
@@ -69,7 +69,7 @@ select ProductID	AS ProductID,
        ThumbnailPhotoFileName	AS ThumbnailPhotoFileName,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate
-       from ods.product
+       from ods.Product
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
 select ProductID	AS ProductID,
@@ -89,8 +89,8 @@ select ProductID	AS ProductID,
        ThumbnailPhotoFileName	AS ThumbnailPhotoFileName,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate
-       from dw.product as a
-left join ods.product as b on
+       from dw.Product as a
+left join ods.Product as b on
        a.ProductID = b.ProductID 
        and b.`year` =  '${YEAR}' and b.`month` = '${MONTH}' and b.`day` = '${DAY}'
 where b.ProductID  is null
