@@ -38,8 +38,5 @@ CREATE TABLE dw.Customer
     PasswordSalt STRING,
     rowguid      STRING,
     ModifiedDate STRING
-) PARTITIONED BY (
-    year STRING,
-    month STRING,
-    day STRING)
+)
     STORED AS ORC;

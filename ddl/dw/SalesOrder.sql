@@ -64,8 +64,5 @@ CREATE TABLE dw.SalesOrder
     LineTotal              DECIMAL(32, 10),
     rowguid                STRING,
     ModifiedDate           STRING
-) PARTITIONED BY (
-    year string,
-    month string,
-    day string)
+)
     STORED AS ORC;

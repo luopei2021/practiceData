@@ -18,8 +18,5 @@ CREATE TABLE dw.ProductModelProductDescription
     Culture              STRING,
     rowguid              STRING,
     ModifiedDate         STRING
-) PARTITIONED BY (
-    year string,
-    month string,
-    day string)
+)
 STORED AS ORC;

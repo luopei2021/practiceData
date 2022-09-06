@@ -18,8 +18,5 @@ ProductCategoryID     int
 ,Name     string
 ,rowguid     sting
 ,ModifiedDate string
-)PARTITIONED BY (
-    year string,
-    month string,
-    day string)
+)
 STORED AS ORC;

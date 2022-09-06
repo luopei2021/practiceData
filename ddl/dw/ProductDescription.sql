@@ -15,8 +15,5 @@ ProductDescriptionID int,
 Description string,
 rowguid string,
 ModifiedDate string
-)PARTITIONED BY (
-    year string,
-    month string,
-    day string)
+)
 STORED AS ORC;
