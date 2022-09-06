@@ -1,15 +1,11 @@
--- workflow=etl_product
+-- workflow=product
 --  period=1440
 --  loadType=incremental
 --  logDrivenType=timewindow
 
--- stepId=1
--- sourceConfig
---  dataSourceType=temp
--- targetConfig
---  dataSourceType=variables
--- checkPoint=false
--- dateRangeInterval=0
+-- step=1
+-- source=temp
+-- target=variables
 select from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'), 'yyyy')                                as `YEAR`,
        from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'), 'MM')                                  as `MONTH`,
        from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'), 'dd')                                  as `DAY`;
@@ -17,7 +13,7 @@ select from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'
 
 -- step=2
 -- source=mysql
---  dbName=raw
+--  dbName=bigdata_etl
 --  tableName=product
 -- target=hive
 --  dbName=ods

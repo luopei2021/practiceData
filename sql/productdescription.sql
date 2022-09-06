@@ -1,15 +1,11 @@
--- workflow=etl_address
+-- workflow=productdescription
 --  period=1440
 --  loadType=incremental
 --  logDrivenType=timewindow
 
--- stepId=1
--- sourceConfig
---  dataSourceType=temp
--- targetConfig
---  dataSourceType=variables
--- checkPoint=false
--- dateRangeInterval=0
+-- step=1
+-- source=temp
+-- target=variables
 select from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'), 'yyyy')                                as `YEAR`,
        from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'), 'MM')                                  as `MONTH`,
        from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'), 'dd')                                  as `DAY`;
@@ -17,60 +13,45 @@ select from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'
 
 -- step=2
 -- source=mysql
---  dbName=raw
---  tableName=Address
+--  dbName=bigdata_etl
+--  tableName=ProductDescription
 -- target=hive
 --  dbName=ods
---  tableName=Address
+--  tableName=ProductDescription
 -- writeMode=overwrite
 -- skipFollowStepWhenEmpty=true
-select AddressID	AS AddressID,
-       AddressLine1	AS AddressLine1,
-       AddressLine2	AS AddressLine2,
-       City	AS City,
-       StateProvince	AS StateProvince,
-       CountryRegion	AS CountryRegion,
-       PostalCode	AS PostalCode,
+select ProductDescriptionID	AS ProductDescriptionID,
+       Description	AS Description,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate,
        '${YEAR}' AS "year",
        '${MONTH}' AS "month",
        '${DAY}' AS "day"
-from raw.Address
+from raw.ProductDescription
 where ModifiedDate >= '${DATA_RANGE_START}' and ModifiedDate < '${DATA_RANGE_END}'
 
 
 -- step=3
 -- source=hive
 --  dbName=ods
---  tableName=Address
+--  tableName=ProductDescription
 -- target=hive
 --  dbName=dw
---  tableName=Address
+--  tableName=ProductDescription
 -- writeMode=overwrite
-select AddressID	AS AddressID,
-       AddressLine1	AS AddressLine1,
-       AddressLine2	AS AddressLine2,
-       City	AS City,
-       StateProvince	AS StateProvince,
-       CountryRegion	AS CountryRegion,
-       PostalCode	AS PostalCode,
+select ProductDescriptionID	AS ProductDescriptionID,
+       Description	AS Description,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate
-       from ods.Address
+       from ods.ProductDescription
 where `year` =  '${YEAR}' and `month` = '${MONTH}' and `day` = '${DAY}'
 union all
-select AddressID	AS AddressID,
-       AddressLine1	AS AddressLine1,
-       AddressLine2	AS AddressLine2,
-       City	AS City,
-       StateProvince	AS StateProvince,
-       CountryRegion	AS CountryRegion,
-       PostalCode	AS PostalCode,
+select ProductDescriptionID	AS ProductDescriptionID,
+       Description	AS Description,
        rowguid	AS rowguid,
        ModifiedDate	AS ModifiedDate
-       from dw.Address as a
-left join ods.Address as b on
-       a.AddressID = b.AddressID 
+       from dw.ProductDescription as a
+left join ods.ProductDescription as b on
+       a.ProductDescriptionID = b.ProductDescriptionID 
        and b.`year` =  '${YEAR}' and b.`month` = '${MONTH}' and b.`day` = '${DAY}'
-where b.AddressID  is null
+where b.ProductDescriptionID  is null

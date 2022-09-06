@@ -34,4 +34,4 @@ SELECT c.ship_date as report_date,
        IF(l.last_total_due IS NULL, 0.0, (c.total_due - l.last_total_due) / l.last_total_due) AS growth_rate
 FROM CurrentTotalDue AS c
          INNER JOIN LastMonthTotalDue AS l ON c.ship_date = l.ship_date AND c.city = l.city
-ORDER BY ship_date, city;
+ORDER BY report_date, city;

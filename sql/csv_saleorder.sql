@@ -1,7 +1,14 @@
--- workflow=etl_csv_saleorder
+-- workflow=csv_saleorder
 --  period=1440
 --  loadType=incremental
 --  logDrivenType=timewindow
+
+-- step=0
+-- source=temp
+-- target=variables
+select from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'), 'yyyy')                                as `YEAR`,
+       from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'), 'MM')                                  as `MONTH`,
+       from_unixtime(unix_timestamp('${DATA_RANGE_START}', 'yyyy-MM-dd HH:mm:ss'), 'dd')                                  as `DAY`;
 
 -- step=1
 -- source=sftp
