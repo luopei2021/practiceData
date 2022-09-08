@@ -1,3 +1,6 @@
+drop table  ods.SalesOrder;
+drop table  dw.SalesOrder;
+drop table  ods.csv_SalesOrder;
 CREATE TABLE ods.SalesOrder
 (
     SalesOrderID           INT,
@@ -7,7 +10,7 @@ CREATE TABLE ods.SalesOrder
     DueDate                STRING,
     ShipDate               STRING,
     Status                 TINYINT,
-    OnlineOrderFlag        BINARY,
+    OnlineOrderFlag        boolean,
     SalesOrderNumber       STRING,
     PurchaseOrderNumber    STRING,
     AccountNumber          STRING,
@@ -43,7 +46,7 @@ CREATE TABLE dw.SalesOrder
     DueDate                STRING,
     ShipDate               STRING,
     Status                 TINYINT,
-    OnlineOrderFlag        BINARY,
+    OnlineOrderFlag        boolean,
     SalesOrderNumber       STRING,
     PurchaseOrderNumber    STRING,
     AccountNumber          STRING,
@@ -76,7 +79,7 @@ CREATE TABLE ods.csv_SalesOrder
     DueDate                STRING,
     ShipDate               STRING,
     Status                 TINYINT,
-    OnlineOrderFlag        BINARY,
+    OnlineOrderFlag        boolean,
     SalesOrderNumber       STRING,
     PurchaseOrderNumber    STRING,
     AccountNumber          STRING,

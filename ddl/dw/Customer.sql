@@ -1,7 +1,9 @@
+drop table  ods.Customer;
+drop table  dw.Customer;
 CREATE TABLE ods.Customer
 (
     CustomerID   INT,
-    NameStyle    BINARY,
+    NameStyle    boolean,
     Title        STRING,
     FirstName    STRING,
     MiddleName   STRING,
@@ -24,7 +26,7 @@ CREATE TABLE ods.Customer
 CREATE TABLE dw.Customer
 (
     CustomerID   INT,
-    NameStyle    BINARY,
+    NameStyle    boolean,
     Title        STRING,
     FirstName    STRING,
     MiddleName   STRING,

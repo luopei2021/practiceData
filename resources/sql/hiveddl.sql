@@ -67,7 +67,7 @@ STORED AS ORC;
 create table  Customer
 (
 CustomerID INT
-,NameStyle BINARY
+,NameStyle boolean
 ,Title STRING
 ,FirstName STRING
 ,MiddleName STRING
@@ -131,7 +131,7 @@ SalesOrderID INT
 ,DueDate STRING
 ,ShipDate STRING
 ,Status TINYINT
-,OnlineOrderFlag BINARY
+,OnlineOrderFlag boolean
 ,SalesOrderNumber STRING
 ,PurchaseOrderNumber STRING
 ,AccountNumber STRING
